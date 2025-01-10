@@ -17,13 +17,38 @@ Features
 
 
 Installation
-    Prerequisites
+    > Prerequisites
         PHP >= 7.4
         Composer
         A database (MySQL, PostgreSQL, etc.)
         CodeIgniter 4 framework
 
+
 Setup Instructions
+
 Clone the repository:
-    git clone https://github.com/your-repo/task-management.git
-    cd task-management
+    > git clone https://github.com/akanni6767/task-management.git
+    > cd task-management
+
+
+Set your database credentials in the .env file:
+
+    database.default.hostname = localhost
+    database.default.database = tasks
+    database.default.username = your_username
+    database.default.password = your_password
+    database.default.DBDriver = MySQLi
+
+    JWT_SECRET='your_secret'
+
+
+Run migrations to create the tasks table:
+    php spark migrate
+
+Seed the database with user login data:
+    php spark db:seed UserSeeder
+
+Start the development server:
+    php spark serve
+
+
