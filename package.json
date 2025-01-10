@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "watch": "sass --watch ./public/css/tailwind/task_modal.scss ./public/css/src/task_modal.css & postcss ./public/css/src/task_modal.css -o ./public/css/src/task_modal.css --watch"
+  },
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.83.1"
+  }
+}

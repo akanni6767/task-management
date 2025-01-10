@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    @apply m-0 p-0;
+}
+body,html {
+    @apply w-full h-full bg-gray-100;
+}
+.login_wrapper {
+    @apply flex justify-center items-center w-full h-full;
+    section {
+        @apply sm:w-96 h-fit shadow-lg rounded-lg border border-gray-300;
+        @apply py-10 px-6 flex gap-8 flex-col bg-white;
+        @apply max-sm:w-11/12;
+        header {
+            @apply w-full h-fit text-center font-bold text-3xl;
+        }
+        form {
+            @apply flex flex-col gap-3 w-full h-fit;
+            .form_group {
+                @apply flex flex-col gap-2 w-full;
+                .input_form {
+                    @apply flex flex-col gap-1 border-b-2 py-1 px-2 border-gray-300;
+                    label {
+                        @apply text-sm font-semibold text-gray-600;
+                    }
+                    .input_icon {
+                        @apply relative w-full;
+                        > span {
+                            @apply text-gray-600 absolute top-1/2 -translate-y-1/2 text-lg;
+                        }
+                        > input {
+                            @apply w-full border-none text-sm pl-6 py-2 focus-visible:outline-none;
+                            @apply placeholder:text-gray-400;
+                        }
+                    }
+                    
+                }
+                .input_form + .input_form>input:focus-visible {
+                    @apply border-red-700;
+                }
+                .hint_info {
+                    @apply text-xs font-light hidden;
+                }
+            }
+            .forget_password {
+                @apply w-full flex justify-end items-start text-sm;
+                > a {
+                    @apply text-purple-500;
+                }
+            }
+            > button {
+                @apply rounded-full transition-all bg-purple-500 text-white font-semibold text-lg;
+                @apply py-2 flex justify-center mt-4;
+            }
+        }
+    }
+}

@@ -1,0 +1,124 @@
+
+.form {
+    @apply flex flex-col gap-4 p-0;
+    .ads_image {
+        @apply w-full bg-white rounded-2xl h-fit max-sm:rounded-b-none;
+        
+        > article {
+            @apply flex-grow w-full py-3 flex flex-col gap-1;
+            .upload__drag_file {
+                @apply h-32 rounded-md border w-full border-gray-200 flex flex-col justify-center items-center gap-5;
+                > img {
+                    @apply bg-gray-100 rounded-full p-2;    
+                }
+                > p {
+                    @apply text-gray-400 text-sm font-light w-3/5 text-center flex flex-col;
+                    label {
+                        @apply text-blue-600 font-semibold ;
+                    }
+                }
+            }
+        }
+
+    }
+    > h3 {
+        @apply font-medium text-lg
+    }
+    .word-controller {
+        @apply flex gap-3 sm:items-center max-sm:flex-col w-full p-0;
+        select {
+            @apply w-2/5 max-sm:w-full cursor-pointer;
+        }
+        .word-formatter {
+            @apply flex gap-3  text-gray-400;
+        }
+    }
+    .form-inline {
+        .form-group {
+            @apply px-0;
+        }
+        @apply flex justify-start max-sm:flex-col items-start gap-6 p-0;
+    }
+    .hint {
+        @apply text-gray-400 text-xs hidden;
+        &[data-show='true']{
+            @apply block;
+        }
+    }
+    .select_dropdown {
+        @apply h-fit;
+        .selected-user {
+            @apply px-[13px] py-[10px];
+        }
+        
+        &[data-open='true'] {
+            @apply border-2 border-blue-300;
+        }
+    }
+    .form-group {
+        @apply flex flex-col justify-start items-start gap-1 w-full p-0;
+        label {
+            @apply text-gray-700 font-medium text-sm;
+        }
+        .form-control {
+            --tw-border-opacity: 1;
+            border: 1px solid rgb(209 213 219 / var(--tw-border-opacity)) !important;
+            @apply px-[13px] py-[10px] rounded-md w-full bg-inherit cursor-text shadow-sm placeholder:text-sm placeholder:text-gray-300
+            placeholder:font-normal;
+            @apply outline-blue-300;
+        }
+        #profile-link {
+            border: none !important;
+        }
+        .border-right {
+            @apply border-r border-gray-300 gap-3 leading-3;
+        }
+        .ol {
+            @apply list-decimal list-inside px-3 text-sm text-gray-500 leading-7;
+        }
+        
+        select {
+            @apply px-3 py-[10px] border rounded-md 
+            border-gray-300 bg-inherit w-2/5 max-sm:w-full cursor-pointer;
+        }
+    }
+    .icon-form-control {
+        @apply border border-gray-300 rounded-md p-0 flex w-full justify-start;
+        .form-control {
+            @apply border-none outline-none rounded-none;
+        }
+        .field-icon {
+            @apply size-6;
+        }
+        label {
+            @apply text-gray-500 flex text-base font-normal justify-start items-center px-3;
+        }
+        label[for="email"] {
+            @apply pr-0;
+        }
+        .form-control:visited .icon-form-control-l {
+            @apply border border-black;
+        }
+        .username-copy {
+            @apply flex justify-between max-sm:hidden items-center px-3 font-semibold text-sm gap-3 whitespace-nowrap cursor-pointer;
+        }
+    }
+    .profile-image {
+        @apply flex justify-start items-start max-sm:flex-col gap-5 px-6;
+        > img {
+            @apply size-16 object-cover rounded-full;
+        }
+        &-change {
+            @apply h-32 rounded-md border w-full border-gray-200 flex flex-col justify-center items-center gap-5;
+            > img {
+                @apply bg-gray-100 rounded-full p-2;
+            }
+            > p {
+                @apply text-gray-400 text-sm font-light w-3/5 text-center;
+                label {
+                    @apply text-blue-600 font-semibold ;
+                }
+            }
+        }
+    }
+}
