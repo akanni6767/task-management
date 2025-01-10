@@ -13,6 +13,7 @@ class TasksModel extends Model
         "description",
         "estimation_from",
         "estimation_to",
+        "task_status",
         "task_type",
         "invites",
         "priority",

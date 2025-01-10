@@ -13,7 +13,7 @@
         </th>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">event_available</span>Estimation
+                <span class="material-symbols-rounded">event_available</span>Due Date
             </div>
         </th>
         <th>    

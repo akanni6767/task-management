@@ -54,4 +54,24 @@ class DashboardController extends BaseController
         $dateFormat = DateTime::createFromFormat('m/d/Y', $date);
         return $dateFormat->format('Y-m-d H:i:s');
     }
+
+    public function updateTask() {
+        
+        $input = $this->request->getPost();
+        
+        $rules = [
+            'id'              => 'required|min_length[1]',
+            'task_status'     => 'required|min_length[3]|max_length[255]',
+            'description'     => 'permit_empty|max_length[5000]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return $this->failValidationErrors($this->validator->getErrors());
+        }
+
+        // Update
+        $taskModel = new TasksModel();
+        $taskModel->update($input["id"], $input);
+        return redirect()->to("/");
+    }
 }

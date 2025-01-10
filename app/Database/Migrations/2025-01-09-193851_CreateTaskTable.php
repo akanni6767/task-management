@@ -49,7 +49,8 @@ class CreateTaskTable extends Migration
             "task_status" => [
                 "type" => "VARCHAR",
                 "constraint" => 200,
-                "null" => false
+                "null" => false,
+                "default" => "To-do"
             ],
             "created_at datetime default current_timestamp",
             "updated_at datetime default current_timestamp on update current_timestamp",

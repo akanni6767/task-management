@@ -12,6 +12,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->group("", ["filter" => "auth"], function($routes) {
     $routes->get('/', [DashboardController::class, 'index']);
     $routes->post('/add_task', [DashboardController::class, 'addTask']);
+    $routes->post('/update_task/(:num)', [DashboardController::class, 'updateTask']);
 });
 
 $routes->get('/login', [LoginController::class, 'index']);

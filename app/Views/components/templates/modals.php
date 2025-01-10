@@ -103,11 +103,12 @@
 <dialog class="right_modal">
     <div class="task_details" aria-hidden="true">
         <header>
-            <div class="back"><span class="material-symbols-outlined">chevron_left</span> Back</div>
+            <div class="back" onclick="closeTaskDetails()"><span class="material-symbols-outlined">chevron_left</span> Back</div>
         </header>
         <div class="details_content">
             <header><h1 id="d_task_name">KPI and Employee Statistics Page</h1></header>
-            <form method="post" class="table_summary">
+            <form method="post" class="table_summary" id="task_details_form">
+                <input type="hidden" id="task_id" name="id" />
                 <div class="tr">
                     <div class="th"><span class="material-symbols-outlined">adjust</span>Status</div>
                     <div class="td">
@@ -133,7 +134,7 @@
                     </div>
                 </div>
                 <div class="tr">
-                    <div class="th"><span class="material-symbols-outlined">adjust</span>Status</div>
+                    <div class="th"><span class="material-symbols-outlined">adjust</span>Type/Priority</div>
                     <div class="td">
                         <ul class="tag">
                             <li>
@@ -163,7 +164,7 @@
                     <div class="th">Task On Progress</div>
                     <div class="td right">
                         <div class="all_day_switch">
-                            <input type="radio" hidden name="all_day" value="In Progress" id="Progress">
+                            <input type="radio" hidden name="task_status" value="In Progress" id="Progress">
                             <label for="Progress"></label>
                         </div>
                     </div>
@@ -172,7 +173,7 @@
                     <div class="th">Task In Review</div>
                     <div class="td right">
                         <div class="all_day_switch">
-                            <input type="radio" hidden value="On Pending" name="all_day" id="Review">
+                            <input type="radio" hidden value="On Pending" name="task_status" id="Review">
                             <label for="Review"></label>
                         </div>
                     </div>
@@ -181,7 +182,7 @@
                     <div class="th">Task Complete</div>
                     <div class="td right">
                         <div class="all_day_switch">
-                            <input type="radio" hidden name="all_day" value="Completed" id="Complete">
+                            <input type="radio" hidden name="task_status" value="Completed" id="Complete">
                             <label for="Complete"></label>
                         </div>
                     </div>
