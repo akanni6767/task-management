@@ -40,9 +40,6 @@ class CreateUserTable extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('users');
-
-        $seeder = \Config\Services::seeder();
-        $seeder->call(\App\Database\Seeds\UserSeeder::class);
     }
 
     public function down()
