@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
             "email" => "softdephjs@gmail.com",
             "password" => password_hash("1234567", PASSWORD_BCRYPT)
         );
-
+ 
         $this->db->table("users")->insert($data);
     }
 }

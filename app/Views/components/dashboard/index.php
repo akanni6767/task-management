@@ -73,14 +73,14 @@
                                 'Feature' => "info", 
                                 'Improvement' => "success",
                             ];
-                            $tasks = json_decode($alltask->tasks,true);?>
+                            $tasks = $alltask;?>
 
                             <li>
                                 <header>
                                     <span class="icon material-symbols-rounded">keyboard_arrow_down</span>
                                     <div class="task_label">
-                                        <span class="task_label_indicator <?= $indicator[$alltask->task_status]; ?>"></span>
-                                        <h4 class="task_status"><?= $alltask->task_status ?></h4>
+                                        <span class="task_label_indicator <?= $indicator[$key]; ?>"></span>
+                                        <h4 class="task_status"><?= $key ?></h4>
                                         <span class="task_count"><?= count($tasks) ?></span>
                                     </div>
                                 </header>
