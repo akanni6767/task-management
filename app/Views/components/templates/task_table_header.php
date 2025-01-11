@@ -3,32 +3,32 @@
     <tr>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">track_changes</span>Task Name
+                <span class="icon material-symbols-rounded">track_changes</span>Task Name
             </div>
         </th>
         <th style="width: 30%;">    
             <div class="theader">
-                <span class="material-symbols-rounded">sort</span>Description
+                <span class="icon material-symbols-rounded">sort</span>Description
             </div>
         </th>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">event_available</span>Due Date
+                <span class="icon material-symbols-rounded">event_available</span>Due Date
             </div>
         </th>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">note_stack</span>Type
+                <span class="icon material-symbols-rounded">note_stack</span>Type
             </div>
         </th>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">groups</span>People
+                <span class="icon material-symbols-rounded">groups</span>People
             </div>
         </th>
         <th>    
             <div class="theader">
-                <span class="material-symbols-rounded">priority</span>Priority
+                <span class="icon material-symbols-rounded">priority</span>Priority
             </div>
         </th>
         <th></th>

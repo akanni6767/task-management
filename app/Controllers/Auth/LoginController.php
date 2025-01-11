@@ -38,16 +38,18 @@ class LoginController extends BaseController
             $user = $userModel->where('email', $email)->first();
        
             if(is_null($user)) {
+                return redirect()->back()->with("message",'Invalid email or password.' );
                 return $this->respond(['error' => 'Invalid email or password.'], 401);
             }
        
             $pwd_verify = password_verify($password, $user['password']);
        
             if(!$pwd_verify) {
+                return redirect()->back()->with("message",'Invalid email or password.' );
                 return $this->respond(['error' => 'Invalid email or password.'], 401);
             }
       
-            $key = getenv('JWT_SECRET');
+            $key = getenv('JWT_SECRET') ?? "secret";
             $iat = time();
             $exp = $iat + 3600;
       

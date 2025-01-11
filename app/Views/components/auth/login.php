@@ -12,6 +12,9 @@
 <body>
     <div class="login_wrapper">
         <section>
+            <?php if(session()->has("message")) : ?>
+                <span class="error_message"><?= session()->get("message") ?></span>
+            <?php endif ?>
             <header>Login</header>
             <form id="auth_login" action="<?= url_to('verify_login') ?>" method="post">
                 <div class="form_group">

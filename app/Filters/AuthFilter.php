@@ -27,7 +27,7 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $key = getenv('JWT_SECRET');
+        $key = getenv('JWT_SECRET') ?? "secret";
         $header = $request->getHeaderLine("Authorization");
 
         $token = session()->get('auth_token');
@@ -42,7 +42,7 @@ class AuthFilter implements FilterInterface
             $response = service('response');
             $response->setBody($header);
             $response->setStatusCode(401);
-            return redirect()->to("login");
+            return redirect()->to("login")->with("message",'Something went wrong.');
             return $response;
         }
    
@@ -52,7 +52,7 @@ class AuthFilter implements FilterInterface
             $response = service('response');
             $response->setBody('Access denied');
             $response->setStatusCode(401);
-            return redirect()->to("login");
+            return redirect()->to("login")->with("message",'Something went wrong.');
             return $response;
         }
     }

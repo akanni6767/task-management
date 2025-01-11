@@ -39,7 +39,7 @@ class AuthController extends BaseController
                 return $this->respond(['error' => 'Invalid email or password.'], 401);
             }
       
-            $key = getenv('JWT_SECRET');
+            $key = getenv('JWT_SECRET') ?? "secret";
             $iat = time();
             $exp = $iat + 3600;
       
@@ -65,7 +65,7 @@ class AuthController extends BaseController
 
     public function Check()
     {
-        $key = getenv('JWT_SECRET');
+        $key = getenv('JWT_SECRET') ?? "secret";
         $token = session()->get('auth_token');
 
         $userModel = new UsersModel();

@@ -62,11 +62,14 @@ class DashboardController extends BaseController
         $rules = [
             'id'              => 'required|min_length[1]',
             'task_status'     => 'required|min_length[3]|max_length[255]',
-            'description'     => 'permit_empty|max_length[5000]',
+            'description'     => 'required|max_length[5000]',
         ];
 
         if (!$this->validate($rules)) {
-            return $this->failValidationErrors($this->validator->getErrors());
+            $this->failValidationErrors($this->validator->getErrors());
+
+            return redirect()->back()->with("message",$this->validator->getErrors() );
+
         }
 
         // Update

@@ -18,7 +18,7 @@ html, body {
 
 #main {
     @apply flex-grow h-full;
-    @apply relative ;
+    @apply relative w-full flex flex-col;
     > header {
         @apply w-full py-3 bg-gray-50 sticky top-0 right-0;
         @apply flex justify-between px-4 shadow-inner shadow-gray-300 items-center;
@@ -34,7 +34,7 @@ html, body {
         }
         .notification_settings {
             @apply flex gap-3 items-center ;
-            > span {
+            > span.icon {
                 @apply text-gray-600 text-xl cursor-pointer;
             }
         }
@@ -42,7 +42,7 @@ html, body {
 
     /* Main content */
     .main_content {
-        @apply flex flex-col gap-2 w-full h-full;
+        @apply flex flex-col gap-2 w-full flex-grow ;
         @apply overflow-hidden overflow-y-auto;
         > header {
             @apply flex gap-4 items-center;
@@ -55,16 +55,24 @@ html, body {
                 @apply font-medium text-2xl text-purple-950;
             }
         }
-
+        .error_container {
+            @apply px-[--mc-px];
+            .error_message {
+                @apply w-full px-3 py-2 text-sm bg-red-700 bg-opacity-40 text-white rounded-lg;
+                @apply flex flex-col gap-2;
+            }
+        }
         .task_control_bar {
             @apply flex justify-between items-center border-b px-[--mc-px] p-0;
+            @apply max-sm:flex-col-reverse gap-4;
             .task_view {
                 @apply flex gap-6 items-end place-self-end;
+                @apply max-sm:w-full max-sm:place-self-center;
                 > label {
                     @apply text-sm leading-none cursor-pointer;
                     > div {
                         @apply relative -bottom-[1px] px-3 pb-0.5 text-gray-400 border-gray-800 flex gap-3 items-center font-medium;
-                        span {
+                        span.icon {
                             @apply text-lg;
                         }
                     }
@@ -75,9 +83,10 @@ html, body {
             }
             .task_control {
                 @apply flex gap-2 items-center mb-2 h-fit;
+                @apply max-sm:w-full;
                 .search_task {
                     @apply w-32 h-fit overflow-hidden;
-                    @apply relative;
+                    @apply relative max-sm:w-full;
                     > label {
                         @apply absolute top-1/2 -translate-y-1/2 left-2 text-lg text-gray-600;
                     }
@@ -91,14 +100,14 @@ html, body {
                 }
                 .task_filter {
                     @apply flex items-center gap-1 rounded-lg border text-sm text-gray-700 px-3 py-0.5;
-                    > span {
+                    > span.icon {
                         @apply text-xl;
                     }
                 }
                 .add_task_btn {
                     @apply flex gap-2 text-white bg-black rounded-lg items-center;
                     @apply py-0.5 px-3 text-sm;
-                    > span {
+                    > span.icon {
                         @apply text-xl;
                     }
                 }
@@ -115,7 +124,7 @@ html, body {
                         @apply grid grid-cols-1 w-full gap-1 h-fit overflow-hidden;
                         header {
                             @apply rounded-xl bg-blue-100 bg-opacity-40 flex gap-3 px-4 py-2 items-center;
-                            > span {
+                            > span.icon {
                                 @apply text-lg text-gray-400 hover:bg-gray-300 rounded-full hover:text-white transition-colors cursor-pointer leading-none;
                                 @apply flex justify-center items-center;
                             }
@@ -142,78 +151,93 @@ html, body {
                                 }
                             }
                         }
-                        table {
-                            @apply table overflow-x-auto;
-                            thead tr th {
-                                @apply py-2 ;
-                            }
-                            thead tr th .theader{
-                                @apply font-medium text-sm text-gray-500;
-                                @apply table-auto items-center flex gap-2 px-4;
-                                span {
-                                    @apply text-lg;
+                        .table_wrapper {
+                            @apply w-full h-full overflow-x-auto ;
+                            table {
+                                @apply table overflow-x-auto w-full;
+                                thead tr th {
+                                    @apply py-2 ;
                                 }
-                            }
-                            tbody tr td {
-                                @apply text-wrap px-3 border-y align-top py-2 cursor-pointer;
-                                > div {
-                                    @apply w-full h-full flex items-start text-base leading-5;
-                                    .type {
-                                        @apply flex gap-2 justify-center items-center px-3 py-0.5;
-                                        @apply bg-purple-400 bg-opacity-40 rounded-lg text-sm text-blue-900 font-semibold;
-                                        span {
-                                            @apply text-lg;
-                                        }
-                                    }
-                                    
-                                    .type.info {
-                                        @apply bg-blue-400 bg-opacity-30;
-                                        @apply text-blue-800 flex justify-center items-center gap-2;
-                                    }
-                                    .type.success {
-                                        @apply bg-green-400 bg-opacity-30;
-                                        @apply text-green-600 flex justify-center items-center gap-2;
-                                    }
-                                    .type.error {
-                                        @apply bg-red-500 bg-opacity-30;
-                                        @apply text-red-800 flex justify-center items-center gap-2;
-                                    }
-                                    .invites {
-                                        @apply w-full h-12 overflow-hidden flex flex-row relative p-1;
-                                        > li {
-                                            @apply border first:m-0 -ml-3 size-8 rounded-full;
-                                            span {
-                                                @apply h-full w-full bg-gray-400 text-white;
-                                                @apply flex justify-center items-center text-sm font-semibold;
-                                            }
-                                            > img {
-                                                @apply w-full h-full object-cover;
-                                            }
-                                        }
-                                    }
-                                    .priority {
-                                        @apply flex shadow-sm rounded-lg py-0.5 px-2 text-sm font-semibold border;
-                                    }
-                                    .priority.low {
-                                        @apply bg-blue-400 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-blue-800;
-                                        @apply text-blue-800 flex justify-center items-center gap-2;
-                                    }
-                                    .priority.md {
-                                        @apply bg-orange-400 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-orange-600;
-                                        @apply text-orange-600 flex justify-center items-center gap-2;
-                                    }
-                                    .priority.high {
-                                        @apply bg-red-500 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-red-800;
-                                        @apply text-red-800 flex justify-center items-center gap-2;
-                                    }
-                                    > span {
-                                        @apply rounded-lg px-2 py-1 border flex justify-center items-center text-lg text-red-600 cursor-pointer;
-                                        @apply transition-all hover:shadow-md hover:bg-red-400 hover:text-white;
+                                thead tr th .theader{
+                                    @apply font-medium text-sm text-gray-500;
+                                    @apply table-auto items-center flex gap-2 px-4;
+                                    span.icon {
+                                        @apply text-lg;
                                     }
                                 }
+                                tbody tr td {
+                                    @apply text-wrap px-3 border-y align-top py-2 cursor-pointer;
+                                    > div {
+                                        @apply w-full h-full flex items-start text-base leading-5;
+                                        .type {
+                                            @apply flex gap-2 justify-center items-center px-3 py-0.5;
+                                            @apply bg-purple-400 bg-opacity-40 rounded-lg text-sm text-blue-900 font-semibold;
+                                            span.icon {
+                                                @apply text-lg;
+                                            }
+                                        }
+                                        
+                                        .type.info {
+                                            @apply bg-blue-400 bg-opacity-30;
+                                            @apply text-blue-800 flex justify-center items-center gap-2;
+                                        }
+                                        .type.success {
+                                            @apply bg-green-400 bg-opacity-30;
+                                            @apply text-green-600 flex justify-center items-center gap-2;
+                                        }
+                                        .type.error {
+                                            @apply bg-red-500 bg-opacity-30;
+                                            @apply text-red-800 flex justify-center items-center gap-2;
+                                        }
+                                        .invites {
+                                            @apply w-full h-12 overflow-hidden flex flex-row relative p-1;
+                                            > li {
+                                                @apply border first:m-0 -ml-3 size-8 rounded-full;
+                                                span {
+                                                    @apply h-full w-full bg-gray-400 text-white;
+                                                    @apply flex justify-center items-center text-sm font-semibold;
+                                                }
+                                                > img {
+                                                    @apply w-full h-full object-cover;
+                                                }
+                                            }
+                                        }
+                                        .priority {
+                                            @apply flex shadow-sm rounded-lg py-0.5 px-2 text-sm font-semibold border;
+                                        }
+                                        .priority.low {
+                                            @apply bg-blue-400 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-blue-800;
+                                            @apply text-blue-800 flex justify-center items-center gap-2;
+                                        }
+                                        .priority.md {
+                                            @apply bg-orange-400 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-orange-600;
+                                            @apply text-orange-600 flex justify-center items-center gap-2;
+                                        }
+                                        .priority.high {
+                                            @apply bg-red-500 bg-opacity-30 before:[content:''] before:size-2 before:rounded-full before:bg-red-800;
+                                            @apply text-red-800 flex justify-center items-center gap-2;
+                                        }
+                                        > span {
+                                            @apply rounded-lg px-2 py-1 border flex justify-center items-center text-lg text-red-600 cursor-pointer;
+                                            @apply transition-all hover:shadow-md hover:bg-red-400 hover:text-white;
+                                        }
+                                    }
+                                }
+                                tbody tr td:not(:first-child) {
+                                    @apply border-l;
+                                }
                             }
-                            tbody tr td:not(:first-child) {
-                                @apply border-l;
+                        }
+                        .table_wrapper::-webkit-scrollbar-thumb {
+                            @apply h-1;
+                        }
+                    }
+                    li.no_task {
+                        @apply w-full flex justify-center items-center min-h-44;
+                        h1 {
+                            @apply text-7xl text-gray-200 font-light flex flex-col items-center;
+                            span {
+                                @apply text-8xl;
                             }
                         }
                     }
@@ -223,18 +247,42 @@ html, body {
     }
 }
 
+.text {
+    @apply max-[878px]:hidden;
+}
+
+
+.x-scroll-nobar {
+    width: 100%;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.x-scroll-bar {
+    scrollbar-gutter: stable;
+    @apply lg:block overflow-x-auto transition-[width] shrink-0;
+
+    &::-webkit-scrollbar {
+        @apply h-1;
+    }
+
+    &::-webkit-scrollbar-track {
+        @apply bg-gray-100;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-gray-300;
+    }
+}
 
 .y-thin-scroll-bar {
     width: 100%;
     overflow-x: hidden;
-    /* Enable horizontal scrolling */
     overflow-y: auto;
-    /* Hide vertical scrollbar */
     white-space: nowrap;
-    /* Prevent wrapping */
     -ms-overflow-style: none;
     scrollbar-width: 5px;
-    /* Hide scrollbar on Firefox */
 }
 
 .y-thin-scroll-bar::-webkit-scrollbar {

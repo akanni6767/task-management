@@ -6,6 +6,7 @@
     .task_details{
         @apply w-2/5 h-full bg-white rounded-l-2xl shadow-2xl transition-transform translate-x-0 ease-in-out 
         aria-hidden:translate-x-full;
+        @apply max-sm:w-full;
         @apply py-3;
         > header {
             @apply w-full border-b py-2 px-8;
@@ -18,7 +19,7 @@
             }
         }
         .details_content{
-            @apply w-full h-full flex flex-col gap-2 px-8;
+            @apply w-full h-full flex flex-col gap-2 px-8 overflow-y-auto;
             > header {
                 @apply py-2;
                 > h1 {
@@ -26,7 +27,7 @@
                 }
             }
             .table_summary {
-                @apply w-full flex flex-col gap-0;
+                @apply w-full flex flex-col gap-0 pb-6;
                 .tr {
                     @apply flex gap-0;
                     .th {
@@ -60,7 +61,7 @@
                             @apply flex gap-2;
                         }
                         > button {
-                            @apply px-9 py-2 text-sm text-white rounded-md bg-purple-600 flex justify-center items-center;
+                            @apply px-9 py-2 text-sm text-nowrap text-white rounded-md bg-purple-600 flex justify-center items-center;
                         }
                     }
                     .td.right {

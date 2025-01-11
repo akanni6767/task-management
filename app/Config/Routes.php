@@ -11,13 +11,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group("", ["filter" => "auth"], function($routes) {
     $routes->get('/', [DashboardController::class, 'index']);
-    $routes->post('/add_task', [DashboardController::class, 'addTask']);
-    $routes->post('/update_task/(:num)', [DashboardController::class, 'updateTask']);
+    $routes->post('add_task', [DashboardController::class, 'addTask']);
+    $routes->post('update_task/(:num)', [DashboardController::class, 'updateTask']);
 });
 
-$routes->get('/login', [LoginController::class, 'index']);
-$routes->post('/auth', [LoginController::class, 'auth'], ["as" => "verify_login"]);
-$routes->post('/api/auth', [AuthController::class, "index"]);
+$routes->get('login', [LoginController::class, 'index']);
+$routes->post('auth', [LoginController::class, 'auth'], ["as" => "verify_login"]);
+$routes->post('api/auth', [AuthController::class, "index"]);
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function($routes) {
     // create Task POST

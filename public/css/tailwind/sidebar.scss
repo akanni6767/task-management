@@ -13,9 +13,10 @@ html, body {
     @apply w-full h-full fixed top-0 left-0;
     @apply flex gap-0;
     .sidebar {
-        @apply min-w-64 h-screen overflow-hidden overflow-y-auto;
+        @apply min-w-64 h-screen overflow-hidden transition-all duration-300 overflow-y-auto;
         @apply shadow-xl py-6 px-4 bg-gray-50;
-        &_wrapper {
+        @apply max-[878px]:-translate-x-full max-[878px]:hidden;
+        .sidebar_wrapper {
             @apply flex flex-col gap-8 w-full h-full overflow-hidden;
             > header {
                 @apply flex flex-col gap-2;
@@ -60,4 +61,6 @@ html, body {
             }
         }
     }
+    
 }
+
