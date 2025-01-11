@@ -50,6 +50,9 @@ class LoginController extends BaseController
             }
       
             $key = getenv('JWT_SECRET') ?? "secret";
+            if($key == null || $key == "") {
+                $key = "secret";
+            }
             $iat = time();
             $exp = $iat + 3600;
       

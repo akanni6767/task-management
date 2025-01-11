@@ -28,6 +28,9 @@ class AuthFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $key = getenv('JWT_SECRET') ?? "secret";
+        if($key == null || $key == "") {
+            $key = "secret";
+        }
         $header = $request->getHeaderLine("Authorization");
 
         $token = session()->get('auth_token');

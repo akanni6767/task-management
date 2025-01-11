@@ -40,6 +40,9 @@ class AuthController extends BaseController
             }
       
             $key = getenv('JWT_SECRET') ?? "secret";
+            if($key == null || $key == "") {
+                $key = "secret";
+            }
             $iat = time();
             $exp = $iat + 3600;
       
@@ -66,6 +69,9 @@ class AuthController extends BaseController
     public function Check()
     {
         $key = getenv('JWT_SECRET') ?? "secret";
+        if($key == null || $key == "") {
+            $key = "secret";
+        }
         $token = session()->get('auth_token');
 
         $userModel = new UsersModel();
